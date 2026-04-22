@@ -1,8 +1,9 @@
+
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Sparkles, Loader2, RefreshCw } from 'lucide-react';
@@ -14,15 +15,6 @@ export function AITool() {
   const [time, setTime] = useState('');
   const [recommendation, setRecommendation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,21 +31,8 @@ export function AITool() {
 
   return (
     <section className="py-48 bg-secondary/10 relative overflow-hidden">
-      {/* Decorative Parallax Circles */}
-      <div 
-        className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float" 
-        style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
-      />
-      <div 
-        className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float"
-        style={{ transform: `translate3d(0, ${scrollY * -0.05}px, 0)` }}
-      />
-
       <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <Card 
-          className="border-none shadow-2xl rounded-[3rem] overflow-hidden bg-background"
-          style={{ transform: `translate3d(0, ${scrollY * -0.03}px, 0)` }}
-        >
+        <Card className="border-none shadow-2xl rounded-[3rem] overflow-hidden bg-background">
           <div className="grid md:grid-cols-5 h-full">
             <div className="md:col-span-2 bg-primary p-16 text-primary-foreground flex flex-col justify-center">
               <Sparkles className="w-16 h-16 mb-8 text-accent animate-pulse" />

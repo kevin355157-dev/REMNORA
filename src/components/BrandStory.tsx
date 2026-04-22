@@ -4,7 +4,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export function BrandStory() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -16,9 +15,9 @@ export function BrandStory() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 overflow-hidden bg-background">
+    <section className="py-32 px-6 overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        {/* Image Parallax (Moving slower/differently) */}
+        {/* Image with Parallax */}
         <div 
           className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl"
           style={{ transform: `translate3d(0, ${scrollY * 0.05}px, 0)` }}
@@ -33,11 +32,8 @@ export function BrandStory() {
           </div>
         </div>
 
-        {/* Text Parallax (Moving in opposite direction or faster) */}
-        <div 
-          className="space-y-8"
-          style={{ transform: `translate3d(0, ${scrollY * -0.05}px, 0)` }}
-        >
+        {/* Text without deep parallax */}
+        <div className="space-y-8">
           <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm block">Our Philosophy</span>
           <h2 className="font-headline text-5xl md:text-7xl text-primary leading-tight">
             每一片茶葉，都是大自然的私語
