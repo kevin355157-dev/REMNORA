@@ -36,19 +36,17 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
-      {/* Background Video */}
+      {/* Background Video - Removed opacity and overlay as requested */}
       <div className="absolute inset-0 z-0">
         <video 
-          key={activeIndex}
           autoPlay 
           loop 
           muted 
           playsInline
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover"
         >
           <source src="https://www.image2url.com/r2/default/videos/1776863246918-e0955b8a-2264-43f4-b059-2b136deeb93c.webm" type="video/webm" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
       </div>
 
       {/* Brand Logo Top Left */}
@@ -66,20 +64,20 @@ export function Hero() {
           "max-w-2xl transition-all duration-500",
           isAnimating ? "opacity-0 -translate-x-8" : "opacity-100 translate-x-0"
         )}>
-          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter">
+          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-lg">
             {currentSlide.title}
           </h1>
-          <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary">
+          <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-md">
             {currentSlide.subtitle}
           </h2>
-          <p className="text-lg text-white/70 mb-10 font-light leading-relaxed max-w-md">
+          <p className="text-lg text-white mb-10 font-light leading-relaxed max-w-md drop-shadow-md">
             {currentSlide.desc}
           </p>
           <div className="flex gap-4">
-            <Button variant="outline" className="rounded-full px-8 py-6 border-white text-white hover:bg-white hover:text-black transition-all">
+            <Button variant="outline" className="rounded-full px-8 py-6 border-white text-white hover:bg-white hover:text-black transition-all bg-black/20 backdrop-blur-sm">
               探索系列
             </Button>
-            <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-secondary border-none">
+            <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-secondary border-none shadow-xl">
               立即購買
             </Button>
           </div>
@@ -87,7 +85,7 @@ export function Hero() {
 
         {/* Right Nav */}
         <div className="absolute right-12 md:right-24 bottom-24 flex flex-col items-end gap-12">
-          <div className="text-8xl font-headline font-bold text-white/20 select-none">
+          <div className="text-8xl font-headline font-bold text-white/40 select-none drop-shadow-2xl">
             {currentSlide.id}
           </div>
           <div className="flex gap-4">
@@ -95,7 +93,7 @@ export function Hero() {
               variant="outline" 
               size="icon" 
               onClick={prevSlide}
-              className="rounded-full border-white/20 hover:bg-white/10 text-white"
+              className="rounded-full border-white/40 bg-black/20 backdrop-blur-sm hover:bg-white/10 text-white"
             >
               <ChevronLeft className="w-6 h-6" />
             </Button>
@@ -103,7 +101,7 @@ export function Hero() {
               variant="outline" 
               size="icon" 
               onClick={nextSlide}
-              className="rounded-full border-white/20 hover:bg-white/10 text-white"
+              className="rounded-full border-white/40 bg-black/20 backdrop-blur-sm hover:bg-white/10 text-white"
             >
               <ChevronRight className="w-6 h-6" />
             </Button>
@@ -112,10 +110,10 @@ export function Hero() {
       </div>
 
       {/* Footer Social Icons */}
-      <div className="absolute bottom-8 left-12 md:left-24 flex gap-6 z-20 opacity-60 hover:opacity-100 transition-opacity">
-        <a href="#" className="hover:text-secondary"><Instagram className="w-5 h-5" /></a>
-        <a href="#" className="hover:text-secondary"><Facebook className="w-5 h-5" /></a>
-        <a href="#" className="hover:text-secondary">
+      <div className="absolute bottom-8 left-12 md:left-24 flex gap-6 z-20 opacity-80 hover:opacity-100 transition-opacity">
+        <a href="#" className="hover:text-secondary drop-shadow-md"><Instagram className="w-5 h-5" /></a>
+        <a href="#" className="hover:text-secondary drop-shadow-md"><Facebook className="w-5 h-5" /></a>
+        <a href="#" className="hover:text-secondary drop-shadow-md">
           <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
             <path d="M24 10.304l-1.503-1.503-6.598 6.598-6.598-6.598-1.503 1.503 8.101 8.101 8.101-8.101z" />
           </svg>
