@@ -48,20 +48,20 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="https://www.image2url.com/r2/default/videos/1776863246918-e0955b8a-2264-43f4-b059-2b136deeb93c.webm" type="video/webm" />
+          <source src="https://www.image2url.com/r2/default/videos/1776865775956-e14ae3f7-4d6b-4a04-bc8a-69af4b5ee390.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Brand Logo Top Left */}
+      {/* Brand Logo Top Left - Enlarge 2x (from w-16 to w-32) */}
       <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
-        <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
+        <div className="w-32 h-32 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
           {logo && (
             <Image 
               src={logo.imageUrl} 
               alt={logo.description} 
-              width={64} 
-              height={64} 
-              className="w-full h-full object-contain p-2"
+              width={128} 
+              height={128} 
+              className="w-full h-full object-contain p-4"
               data-ai-hint="brand logo"
             />
           )}
