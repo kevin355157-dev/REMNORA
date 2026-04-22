@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const slides = [
   { id: '01', title: '拾情話憶', subtitle: 'REMNORA', desc: '在每一次呼吸間，尋回那些深藏在記憶裡的溫潤時光。' },
@@ -15,6 +17,7 @@ const slides = [
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const logo = PlaceHolderImages.find(img => img.id === 'brand-logo');
 
   const nextSlide = () => {
     setIsAnimating(true);
@@ -36,7 +39,7 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
-      {/* Background Video - Removed opacity and overlay as requested */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video 
           autoPlay 
@@ -51,10 +54,17 @@ export function Hero() {
 
       {/* Brand Logo Top Left */}
       <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
-        <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-            <source src="https://www.image2url.com/r2/default/videos/1776863256110-2f96f72b-8575-4aaa-a9da-ded84494e6c9.webm" type="video/webm" />
-          </video>
+        <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
+          {logo && (
+            <Image 
+              src={logo.imageUrl} 
+              alt={logo.description} 
+              width={64} 
+              height={64} 
+              className="w-full h-full object-contain p-2"
+              data-ai-hint="brand logo"
+            />
+          )}
         </div>
       </div>
 
@@ -64,7 +74,7 @@ export function Hero() {
           "max-w-2xl transition-all duration-500",
           isAnimating ? "opacity-0 -translate-x-8" : "opacity-100 translate-x-0"
         )}>
-          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-lg">
+          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-lg text-white">
             {currentSlide.title}
           </h1>
           <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-md">

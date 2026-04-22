@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "brand-logo",
+      "description": "Cilantro Aroma Brand Logo",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496506722137804880/LOOG.png?ex=69ea21fe&is=69e8d07e&hm=62d003ccc9ef42394608deaa4cb05dffd50580a790881e0c75f37716eef12a44&=&format=webp&quality=lossless",
+      "imageHint": "brand logo"
+    },
+    {
+      "id": "product-01",
+      "description": "Premium tea packaging 01",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496503354090852373/Gemini_Generated_Image_7i0lrv7i0lrv7i0l.png_20260422205366.jpg?ex=69ea1edb&is=69e8cd5b&hm=c10b152b78d73cb439b09169c284698b81fef42119ee553b86229b48580bc9fb&",
+      "imageHint": "tea packaging"
+    },
+    {
+      "id": "product-02",
+      "description": "Premium tea packaging 02",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496503370104443051/Gemini_Generated_Image_7i0lrv7i0lrv7i0l.png_202604222053965956.jpg?ex=69ea1edf&is=69e8cd5f&hm=3366a90acd8d5b81e98ed246929e173286b61f9e160586a97729daa8e2a523e9&",
+      "imageHint": "herbal tea"
+    },
+    {
+      "id": "product-03",
+      "description": "Premium tea packaging 03",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496503404237815961/Gemini_Generated_Image_7i0lrv7i0lrv7i0l.png_202604222053.jpeg?ex=69ea1ee7&is=69e8cd67&hm=01e5cbaa427c301f17b02cd69b87ec1a7ec8347f006a8a6331c4888f5c9e22c5&",
+      "imageHint": "organic tea"
+    },
+    {
+      "id": "brand-bg",
+      "description": "Tea field background",
+      "imageUrl": "https://picsum.photos/seed/cilantro1/1920/1080",
+      "imageHint": "tea garden"
+    },
+    {
+      "id": "ingredients",
+      "description": "Fresh tea ingredients",
+      "imageUrl": "https://picsum.photos/seed/cilantro2/800/600",
+      "imageHint": "tea leaves"
+    }
+  ]
 }

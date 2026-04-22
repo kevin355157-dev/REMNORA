@@ -2,9 +2,12 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);
+  const logo = PlaceHolderImages.find(img => img.id === 'brand-logo');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,16 +26,17 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background">
-      <div className="mb-8 w-24 h-24 relative overflow-hidden rounded-full">
-         <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="https://www.image2url.com/r2/default/videos/1776863256110-2f96f72b-8575-4aaa-a9da-ded84494e6c9.webm" type="video/webm" />
-          </video>
+      <div className="mb-8 w-32 h-32 relative overflow-hidden rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm border border-primary/10">
+         {logo && (
+           <Image 
+             src={logo.imageUrl} 
+             alt={logo.description} 
+             width={128} 
+             height={128} 
+             className="w-full h-full object-contain p-4"
+             data-ai-hint="brand logo"
+           />
+         )}
       </div>
       <div className="w-64 h-1 bg-muted rounded-full overflow-hidden mb-2">
         <div 

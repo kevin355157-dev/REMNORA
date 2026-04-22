@@ -5,11 +5,14 @@ import React, { useState, useEffect } from 'react';
 import { Moon, Sun, ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const logo = PlaceHolderImages.find(img => img.id === 'brand-logo');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -37,7 +40,23 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
     )}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <a href="#" className="font-headline text-2xl font-bold tracking-widest text-primary">CILANTRO</a>
+          <a href="#" className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full overflow-hidden bg-white/5 backdrop-blur-md border border-primary/10 flex items-center justify-center">
+              {logo && (
+                <Image 
+                  src={logo.imageUrl} 
+                  alt={logo.description} 
+                  width={40} 
+                  height={40} 
+                  className="w-full h-full object-contain p-1"
+                />
+              )}
+            </div>
+            <span className={cn(
+              "font-headline text-2xl font-bold tracking-widest transition-colors",
+              isScrolled ? "text-primary" : "text-white"
+            )}>CILANTRO</span>
+          </a>
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -45,26 +64,29 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                isScrolled ? "text-foreground/80" : "text-white/80"
+              )}
             >
               {link.name}
             </a>
           ))}
-          <div className="flex items-center gap-2 border-l pl-8 border-border">
-            <Button variant="ghost" size="icon" onClick={toggleTheme}>
+          <div className={cn("flex items-center gap-2 border-l pl-8", isScrolled ? "border-border" : "border-white/20")}>
+            <Button variant="ghost" size="icon" onClick={toggleTheme} className={isScrolled ? "" : "text-white hover:bg-white/10"}>
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </Button>
-            <Button variant="ghost" size="icon" onClick={onCartOpen}>
+            <Button variant="ghost" size="icon" onClick={onCartOpen} className={isScrolled ? "" : "text-white hover:bg-white/10"}>
               <ShoppingCart className="w-5 h-5" />
             </Button>
           </div>
         </div>
 
         <div className="md:hidden flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={onCartOpen}>
+          <Button variant="ghost" size="icon" onClick={onCartOpen} className={isScrolled ? "" : "text-white hover:bg-white/10"}>
             <ShoppingCart className="w-5 h-5" />
           </Button>
-          <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={isScrolled ? "" : "text-white hover:bg-white/10"}>
             {mobileMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>
