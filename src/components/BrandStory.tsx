@@ -1,30 +1,29 @@
 
 "use client"
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export function BrandStory() {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current || !imageRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-      const translateY = (scrollPercent - 0.5) * 150;
-      imageRef.current.style.transform = `translateY(${translateY}px)`;
+      setScrollY(window.scrollY);
     };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section ref={sectionRef} className="py-32 px-6 overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-          <div ref={imageRef} className="absolute inset-0 scale-125">
+        {/* Image Parallax (Moving slower/differently) */}
+        <div 
+          className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl"
+          style={{ transform: `translate3d(0, ${scrollY * 0.05}px, 0)` }}
+        >
+          <div className="absolute inset-0 scale-125">
             <img 
               src="https://picsum.photos/seed/cilantro1/1200/1600" 
               alt="Tea Field" 
@@ -33,8 +32,13 @@ export function BrandStory() {
             />
           </div>
         </div>
-        <div className="space-y-8">
-          <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm">Our Philosophy</span>
+
+        {/* Text Parallax (Moving in opposite direction or faster) */}
+        <div 
+          className="space-y-8"
+          style={{ transform: `translate3d(0, ${scrollY * -0.05}px, 0)` }}
+        >
+          <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm block">Our Philosophy</span>
           <h2 className="font-headline text-5xl md:text-7xl text-primary leading-tight">
             每一片茶葉，都是大自然的私語
           </h2>

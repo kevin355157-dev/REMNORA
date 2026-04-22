@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -37,12 +38,11 @@ export function TeaIntro() {
 
   return (
     <section id="tea-intro" className="py-48 bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Parallax Floating Leaf */}
+      {/* Parallax Floating Leaf - Foreground fast */}
       <div 
         className="absolute top-[-10%] right-[-10%] opacity-10 pointer-events-none"
         style={{ 
-          transform: `translate3d(${scrollY * -0.1}px, ${scrollY * 0.15}px, 0) rotate(${scrollY * 0.02}deg)`,
-          transition: 'transform 0.1s linear'
+          transform: `translate3d(${scrollY * -0.2}px, ${scrollY * 0.3}px, 0) rotate(${scrollY * 0.05}deg)`,
         }}
       >
         <img 
@@ -55,8 +55,7 @@ export function TeaIntro() {
       <div 
         className="absolute bottom-[-20%] left-[-10%] opacity-5 pointer-events-none"
         style={{ 
-          transform: `translate3d(${scrollY * 0.05}px, ${scrollY * -0.1}px, 0) rotate(${scrollY * -0.01}deg)`,
-          transition: 'transform 0.1s linear'
+          transform: `translate3d(${scrollY * 0.1}px, ${scrollY * -0.2}px, 0) rotate(${scrollY * -0.03}deg)`,
         }}
       >
         <img 
@@ -67,7 +66,10 @@ export function TeaIntro() {
       </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-24">
+        <div 
+          className="text-center mb-24"
+          style={{ transform: `translate3d(0, ${scrollY * -0.03}px, 0)` }}
+        >
           <h2 className="font-headline text-5xl md:text-7xl mb-6">三階段感官之旅</h2>
           <p className="max-w-2xl mx-auto opacity-70 font-light text-lg">
             我們以調香師的視角，為每一款茶定義了獨特的層次感。
@@ -79,8 +81,7 @@ export function TeaIntro() {
             <div 
               key={note.title}
               style={{ 
-                transform: `translate3d(0, ${Math.sin(scrollY * 0.002 + index) * 20}px, 0)`,
-                transition: 'transform 0.1s linear'
+                transform: `translate3d(0, ${scrollY * (0.02 * (index + 1))}px, 0)`,
               }}
             >
               <Card className="bg-white/5 border-white/10 text-primary-foreground backdrop-blur-sm hover:bg-white/10 transition-all border-none rounded-[2.5rem] overflow-hidden group">

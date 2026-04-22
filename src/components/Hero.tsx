@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -48,12 +48,11 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
-      {/* Parallax Background Video */}
+      {/* Parallax Background Video - High speed */}
       <div 
         className="absolute inset-0 z-0 overflow-hidden"
         style={{ 
-          transform: `translate3d(0, ${scrollY * 0.5}px, 0)`,
-          transition: 'transform 0.1s linear'
+          transform: `translate3d(0, ${scrollY * 0.4}px, 0)`,
         }}
       >
         <video 
@@ -67,8 +66,11 @@ export function Hero() {
         </video>
       </div>
 
-      {/* Brand Logo Top Left - No outer circle */}
-      <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
+      {/* Brand Logo - Fixed or slight parallax */}
+      <div 
+        className="absolute top-8 left-8 z-20 flex items-center gap-4"
+        style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
+      >
         <div className="w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
           {logo && (
             <Image 
@@ -78,32 +80,42 @@ export function Hero() {
               height={256} 
               className="w-full h-full object-contain"
               data-ai-hint="brand logo"
+              priority
             />
           )}
         </div>
       </div>
 
-      {/* Content */}
+      {/* Content with Layered Parallax */}
       <div className="relative z-10 h-full flex items-center px-12 md:px-24">
         <div 
           className={cn(
-            "max-w-2xl transition-all duration-500",
-            isAnimating ? "opacity-0 -translate-x-8" : "opacity-100 translate-x-0"
+            "max-w-2xl transition-opacity duration-500",
+            isAnimating ? "opacity-0" : "opacity-100"
           )}
-          style={{ 
-            transform: `translate3d(0, ${scrollY * -0.2}px, 0)` 
-          }}
         >
-          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-2xl text-white">
+          <h1 
+            className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-2xl text-white"
+            style={{ transform: `translate3d(0, ${scrollY * -0.3}px, 0)` }}
+          >
             {currentSlide.title}
           </h1>
-          <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-xl">
+          <h2 
+            className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-xl"
+            style={{ transform: `translate3d(0, ${scrollY * -0.2}px, 0)` }}
+          >
             {currentSlide.subtitle}
           </h2>
-          <p className="text-lg text-white mb-10 font-light leading-relaxed max-w-md drop-shadow-xl">
+          <p 
+            className="text-lg text-white mb-10 font-light leading-relaxed max-w-md drop-shadow-xl"
+            style={{ transform: `translate3d(0, ${scrollY * -0.1}px, 0)` }}
+          >
             {currentSlide.desc}
           </p>
-          <div className="flex gap-4">
+          <div 
+            className="flex gap-4"
+            style={{ transform: `translate3d(0, ${scrollY * -0.05}px, 0)` }}
+          >
             <Button variant="outline" className="rounded-full px-8 py-6 border-white text-white hover:bg-white hover:text-black transition-all bg-black/20 backdrop-blur-sm">
               探索系列
             </Button>
@@ -113,10 +125,10 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right Nav */}
+        {/* Right Nav with Slide ID Parallax */}
         <div 
           className="absolute right-12 md:right-24 bottom-24 flex flex-col items-end gap-12"
-          style={{ transform: `translate3d(0, ${scrollY * -0.1}px, 0)` }}
+          style={{ transform: `translate3d(0, ${scrollY * -0.15}px, 0)` }}
         >
           <div className="text-8xl font-headline font-bold text-white/40 select-none drop-shadow-2xl">
             {currentSlide.id}
@@ -146,11 +158,6 @@ export function Hero() {
       <div className="absolute bottom-8 left-12 md:left-24 flex gap-6 z-20 opacity-80 hover:opacity-100 transition-opacity">
         <a href="#" className="hover:text-secondary drop-shadow-md"><Instagram className="w-5 h-5" /></a>
         <a href="#" className="hover:text-secondary drop-shadow-md"><Facebook className="w-5 h-5" /></a>
-        <a href="#" className="hover:text-secondary drop-shadow-md">
-          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M24 10.304l-1.503-1.503-6.598 6.598-6.598-6.598-1.503 1.503 8.101 8.101 8.101-8.101z" />
-          </svg>
-        </a>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 
 "use client"
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingBag } from 'lucide-react';
@@ -25,6 +25,15 @@ export const products = [
 
 export function Products({ onAddToCart }: { onAddToCart: (product: any) => void }) {
   const { toast } = useToast();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleAdd = (product: any) => {
     const img = PlaceHolderImages.find(p => p.id === product.imgId)?.imageUrl || '';
@@ -38,9 +47,12 @@ export function Products({ onAddToCart }: { onAddToCart: (product: any) => void 
   return (
     <section id="products" className="py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div 
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+          style={{ transform: `translate3d(0, ${scrollY * -0.02}px, 0)` }}
+        >
           <div className="max-w-xl">
-            <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm">Collection</span>
+            <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm block">Collection</span>
             <h2 className="font-headline text-5xl md:text-6xl text-primary mt-4">嚴選系列茶品</h2>
           </div>
           <Button variant="link" className="text-primary p-0 h-auto font-bold tracking-widest hover:no-underline">
@@ -49,10 +61,16 @@ export function Products({ onAddToCart }: { onAddToCart: (product: any) => void 
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-          {products.map((product) => {
+          {products.map((product, index) => {
             const imageData = PlaceHolderImages.find(p => p.id === product.imgId);
+            // Dynamic delay/speed based on index for a cascading parallax look
+            const factor = (index % 4) * 0.01;
             return (
-              <div key={product.id} className="group">
+              <div 
+                key={product.id} 
+                className="group"
+                style={{ transform: `translate3d(0, ${scrollY * factor}px, 0)` }}
+              >
                 <div className="relative aspect-square rounded-3xl overflow-hidden bg-muted mb-6 shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
                   <img 
                     src={imageData?.imageUrl} 
