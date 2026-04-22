@@ -63,20 +63,20 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover scale-110"
         >
-          <source src="https://drive.google.com/uc?export=download&id=1azhzPOvUrA1gGCFIPEVOSx6XZxBKdkMv" type="video/mp4" />
+          <source src="https://www.image2url.com/r2/default/videos/1776867400437-e0a3a571-4ebd-4111-abc1-ec18b3bc7d57.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Brand Logo Top Left - Increased Size */}
+      {/* Brand Logo Top Left - No outer circle */}
       <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
-        <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
+        <div className="w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
           {logo && (
             <Image 
               src={logo.imageUrl} 
               alt={logo.description} 
               width={256} 
               height={256} 
-              className="w-full h-full object-contain p-4"
+              className="w-full h-full object-contain"
               data-ai-hint="brand logo"
             />
           )}
@@ -94,13 +94,13 @@ export function Hero() {
             transform: `translate3d(0, ${scrollY * -0.2}px, 0)` 
           }}
         >
-          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-lg text-white">
+          <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-2xl text-white">
             {currentSlide.title}
           </h1>
-          <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-md">
+          <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-xl">
             {currentSlide.subtitle}
           </h2>
-          <p className="text-lg text-white mb-10 font-light leading-relaxed max-w-md drop-shadow-md">
+          <p className="text-lg text-white mb-10 font-light leading-relaxed max-w-md drop-shadow-xl">
             {currentSlide.desc}
           </p>
           <div className="flex gap-4">

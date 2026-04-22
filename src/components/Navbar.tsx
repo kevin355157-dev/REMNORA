@@ -41,14 +41,14 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <a href="#" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-white/5 backdrop-blur-md border border-primary/10 flex items-center justify-center">
+            <div className="w-10 h-10 flex items-center justify-center">
               {logo && (
                 <Image 
                   src={logo.imageUrl} 
                   alt={logo.description} 
                   width={40} 
                   height={40} 
-                  className="w-full h-full object-contain p-1"
+                  className="w-full h-full object-contain"
                 />
               )}
             </div>

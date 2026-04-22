@@ -26,14 +26,14 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background">
-      <div className="mb-8 w-32 h-32 relative overflow-hidden rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm border border-primary/10">
+      <div className="mb-8 w-32 h-32 relative flex items-center justify-center">
          {logo && (
            <Image 
              src={logo.imageUrl} 
              alt={logo.description} 
              width={128} 
              height={128} 
-             className="w-full h-full object-contain p-4"
+             className="w-full h-full object-contain"
              data-ai-hint="brand logo"
            />
          )}
