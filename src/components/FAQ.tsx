@@ -18,17 +18,19 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-32 bg-background">
+    <section id="faq" className="py-32 bg-primary text-primary-foreground transition-colors duration-500">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-5xl text-primary mb-4">常見問題</h2>
-          <p className="text-foreground/60 font-light">如果您有其他疑問，歡迎隨時聯絡我們的客服團隊。</p>
+          <h2 className="font-headline text-5xl mb-4 text-primary-foreground">常見問題</h2>
+          <p className="opacity-70 font-light">如果您有其他疑問，歡迎隨時聯絡我們的客服團隊。</p>
         </div>
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-b-primary/10">
-              <AccordionTrigger className="text-lg font-headline text-primary py-6 hover:no-underline">{faq.q}</AccordionTrigger>
-              <AccordionContent className="text-foreground/70 leading-relaxed font-light text-base pb-6">
+            <AccordionItem key={index} value={`item-${index}`} className="border-b-primary-foreground/20">
+              <AccordionTrigger className="text-lg font-headline text-primary-foreground py-6 hover:no-underline hover:text-secondary">
+                {faq.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-primary-foreground/80 leading-relaxed font-light text-base pb-6">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
