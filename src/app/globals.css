@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -60,20 +59,28 @@
   }
 }
 
-.parallax-bg {
-  transform: translateY(var(--scroll-y, 0));
-  transition: transform 0.1s linear;
+.parallax-container {
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.progress-bar-fill {
-  transition: width 0.3s ease-in-out;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

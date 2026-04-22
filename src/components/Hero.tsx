@@ -1,7 +1,6 @@
-
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -17,7 +16,16 @@ const slides = [
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const logo = PlaceHolderImages.find(img => img.id === 'brand-logo');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const nextSlide = () => {
     setIsAnimating(true);
@@ -39,20 +47,26 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
+      {/* Parallax Background Video */}
+      <div 
+        className="absolute inset-0 z-0 overflow-hidden"
+        style={{ 
+          transform: `translate3d(0, ${scrollY * 0.5}px, 0)`,
+          transition: 'transform 0.1s linear'
+        }}
+      >
         <video 
           autoPlay 
           loop 
           muted 
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-110"
         >
           <source src="https://www.image2url.com/r2/default/videos/1776865775956-e14ae3f7-4d6b-4a04-bc8a-69af4b5ee390.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Brand Logo Top Left - Enlarge 2x (from w-16 to w-32) */}
+      {/* Brand Logo Top Left */}
       <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
         <div className="w-32 h-32 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
           {logo && (
@@ -70,10 +84,15 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center px-12 md:px-24">
-        <div className={cn(
-          "max-w-2xl transition-all duration-500",
-          isAnimating ? "opacity-0 -translate-x-8" : "opacity-100 translate-x-0"
-        )}>
+        <div 
+          className={cn(
+            "max-w-2xl transition-all duration-500",
+            isAnimating ? "opacity-0 -translate-x-8" : "opacity-100 translate-x-0"
+          )}
+          style={{ 
+            transform: `translate3d(0, ${scrollY * -0.2}px, 0)` 
+          }}
+        >
           <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-lg text-white">
             {currentSlide.title}
           </h1>
@@ -94,7 +113,10 @@ export function Hero() {
         </div>
 
         {/* Right Nav */}
-        <div className="absolute right-12 md:right-24 bottom-24 flex flex-col items-end gap-12">
+        <div 
+          className="absolute right-12 md:right-24 bottom-24 flex flex-col items-end gap-12"
+          style={{ transform: `translate3d(0, ${scrollY * -0.1}px, 0)` }}
+        >
           <div className="text-8xl font-headline font-bold text-white/40 select-none drop-shadow-2xl">
             {currentSlide.id}
           </div>

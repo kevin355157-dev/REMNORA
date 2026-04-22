@@ -1,7 +1,6 @@
-
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -15,6 +14,15 @@ export function AITool() {
   const [time, setTime] = useState('');
   const [recommendation, setRecommendation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,43 +38,56 @@ export function AITool() {
   };
 
   return (
-    <section className="py-32 bg-secondary/10">
-      <div className="max-w-4xl mx-auto px-6">
-        <Card className="border-none shadow-2xl rounded-[2rem] overflow-hidden bg-background">
+    <section className="py-48 bg-secondary/10 relative overflow-hidden">
+      {/* Decorative Parallax Circles */}
+      <div 
+        className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float" 
+        style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
+      />
+      <div 
+        className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float"
+        style={{ transform: `translate3d(0, ${scrollY * -0.05}px, 0)` }}
+      />
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <Card 
+          className="border-none shadow-2xl rounded-[3rem] overflow-hidden bg-background"
+          style={{ transform: `translate3d(0, ${scrollY * -0.03}px, 0)` }}
+        >
           <div className="grid md:grid-cols-5 h-full">
-            <div className="md:col-span-2 bg-primary p-12 text-primary-foreground flex flex-col justify-center">
-              <Sparkles className="w-12 h-12 mb-6 text-accent" />
-              <h2 className="font-headline text-4xl mb-4">智能侍茶師</h2>
-              <p className="opacity-70 font-light leading-relaxed">
+            <div className="md:col-span-2 bg-primary p-16 text-primary-foreground flex flex-col justify-center">
+              <Sparkles className="w-16 h-16 mb-8 text-accent animate-pulse" />
+              <h2 className="font-headline text-5xl mb-6 leading-tight">智能侍茶師</h2>
+              <p className="opacity-80 font-light leading-relaxed text-lg">
                 只需告訴我們您的心情、正在享用的美食或當下的時間，我們的 AI 侍茶師將為您挑選最契合的靈魂伴侶。
               </p>
             </div>
-            <div className="md:col-span-3 p-12">
+            <div className="md:col-span-3 p-16 bg-white/50 backdrop-blur-sm">
               {!recommendation ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="space-y-3">
                     <Label className="text-primary font-bold uppercase tracking-widest text-xs">此刻心情</Label>
                     <Input 
                       placeholder="例如：平靜、疲憊、愉悅..." 
-                      className="rounded-xl border-border bg-muted/20"
+                      className="rounded-2xl border-primary/10 bg-white h-14 px-6 text-lg"
                       value={mood}
                       onChange={(e) => setMood(e.target.value)}
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label className="text-primary font-bold uppercase tracking-widest text-xs">正在吃什麼？</Label>
                     <Input 
-                      placeholder="例如：黑巧克力、草莓蛋糕、牛排..." 
-                      className="rounded-xl border-border bg-muted/20"
+                      placeholder="例如：黑巧克力、草莓蛋糕..." 
+                      className="rounded-2xl border-primary/10 bg-white h-14 px-6 text-lg"
                       value={food}
                       onChange={(e) => setFood(e.target.value)}
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label className="text-primary font-bold uppercase tracking-widest text-xs">現在時間</Label>
                     <Input 
                       placeholder="例如：慵懶午後、靜謐深夜..." 
-                      className="rounded-xl border-border bg-muted/20"
+                      className="rounded-2xl border-primary/10 bg-white h-14 px-6 text-lg"
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                     />
@@ -74,23 +95,23 @@ export function AITool() {
                   <Button 
                     type="submit" 
                     disabled={isLoading}
-                    className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold tracking-widest text-lg transition-all"
+                    className="w-full h-16 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold tracking-[0.2em] text-xl transition-all shadow-xl shadow-primary/20"
                   >
-                    {isLoading ? <Loader2 className="animate-spin" /> : "獲取推薦"}
+                    {isLoading ? <Loader2 className="animate-spin" /> : "獲取靈感"}
                   </Button>
                 </form>
               ) : (
-                <div className="animate-in fade-in slide-in-from-bottom duration-500">
-                  <h3 className="font-headline text-2xl text-primary mb-4">為您推薦：</h3>
-                  <div className="p-6 bg-accent/10 rounded-3xl border border-accent/20 mb-8 italic text-foreground/80 leading-relaxed">
+                <div className="animate-in fade-in zoom-in duration-700">
+                  <h3 className="font-headline text-3xl text-primary mb-6">為您推薦：</h3>
+                  <div className="p-8 bg-accent/20 rounded-[2rem] border border-accent/30 mb-10 italic text-foreground/90 leading-loose text-xl shadow-inner">
                     "{recommendation}"
                   </div>
                   <Button 
                     variant="outline" 
                     onClick={() => setRecommendation('')}
-                    className="w-full rounded-full h-12 border-primary text-primary hover:bg-primary hover:text-white"
+                    className="w-full rounded-full h-14 border-primary text-primary hover:bg-primary hover:text-white font-bold tracking-widest"
                   >
-                    <RefreshCw className="w-4 h-4 mr-2" /> 重新測試
+                    <RefreshCw className="w-5 h-5 mr-3" /> 重新探索
                   </Button>
                 </div>
               )}
