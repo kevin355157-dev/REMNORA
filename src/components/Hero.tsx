@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -62,19 +63,19 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover scale-110"
         >
-          <source src="https://www.image2url.com/r2/default/videos/1776865775956-e14ae3f7-4d6b-4a04-bc8a-69af4b5ee390.mp4" type="video/mp4" />
+          <source src="https://drive.google.com/uc?export=download&id=1azhzPOvUrA1gGCFIPEVOSx6XZxBKdkMv" type="video/mp4" />
         </video>
       </div>
 
-      {/* Brand Logo Top Left */}
+      {/* Brand Logo Top Left - Increased Size */}
       <div className="absolute top-8 left-8 z-20 flex items-center gap-4">
-        <div className="w-32 h-32 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
+        <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/20 bg-white/5 backdrop-blur-md">
           {logo && (
             <Image 
               src={logo.imageUrl} 
               alt={logo.description} 
-              width={128} 
-              height={128} 
+              width={256} 
+              height={256} 
               className="w-full h-full object-contain p-4"
               data-ai-hint="brand logo"
             />
