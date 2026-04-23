@@ -41,21 +41,17 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <a href="#" className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center">
+            <div className="h-10 w-auto flex items-center">
               {logo && (
                 <Image 
                   src={logo.imageUrl} 
                   alt={logo.description} 
-                  width={40} 
+                  width={160} 
                   height={40} 
-                  className="w-full h-full object-contain"
+                  className="h-full w-auto object-contain"
                 />
               )}
             </div>
-            <span className={cn(
-              "font-headline text-2xl font-bold tracking-widest transition-colors",
-              isScrolled ? "text-primary" : "text-white"
-            )}>REMNORA</span>
           </a>
         </div>
 

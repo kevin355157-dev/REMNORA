@@ -45,15 +45,15 @@ export function Hero() {
       </div>
 
       {/* Brand Logo */}
-      <div className="absolute top-8 left-8 z-20">
-        <div className="w-32 h-32 md:w-64 md:h-64 flex items-center justify-center">
+      <div className="absolute top-12 left-12 z-20">
+        <div className="w-48 h-auto md:w-80 flex items-center justify-center">
           {logo && (
             <Image 
               src={logo.imageUrl} 
               alt={logo.description} 
-              width={512} 
-              height={512} 
-              className="w-full h-full object-contain"
+              width={384} 
+              height={93} 
+              className="w-full h-auto object-contain"
               data-ai-hint="brand logo"
               priority
             />
@@ -62,7 +62,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center px-12 md:px-24">
+      <div className="relative z-10 h-full flex items-center px-12 md:px-24 pt-24">
         <div className="max-w-2xl animate-in fade-in slide-in-from-left duration-1000">
           <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-2xl">
             {heroContent.title}
