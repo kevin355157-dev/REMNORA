@@ -29,8 +29,8 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
     { name: '產品', href: '#products' },
     { name: '茶葉', href: '#brand-story' },
     { name: '成分', href: '#tea-intro' },
+    { name: '侍茶師', href: '#ai-sommelier' },
     { name: '常見問題', href: '#faq' },
-    { name: '聯絡我們', href: '#footer' },
   ];
 
   return (

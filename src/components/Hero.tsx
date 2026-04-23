@@ -6,12 +6,17 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Instagram } from 'lucide-react';
+import { Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const slide = { id: '01', title: '拾情話憶', subtitle: 'REMNORA', desc: '在每一次呼吸間，尋回那些深藏在記憶裡的溫潤時光。' };
+const slides = [
+  { id: '01', title: '拾情話憶', subtitle: 'REMNORA', desc: '在每一次呼吸間，尋回那些深藏在記憶裡的溫潤時光。' },
+  { id: '02', title: '清翠之林', subtitle: 'AROMA', desc: '漫步於晨霧繚繞的茶園，感受大自然最純淨的氣息。' },
+  { id: '03', title: '暖陽茶座', subtitle: 'ESSENCE', desc: '陽光灑落在杯中，品味一段慵懶而美好的午後時光。' }
+];
 
 export function Hero() {
   const [scrollY, setScrollY] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const logo = PlaceHolderImages.find(img => img.id === 'brand-logo');
 
   useEffect(() => {
@@ -21,6 +26,9 @@ export function Hero() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
@@ -40,7 +48,7 @@ export function Hero() {
         </video>
       </div>
 
-      {/* Brand Logo - Simplified No-Circle Design */}
+      {/* Brand Logo */}
       <div className="absolute top-8 left-8 z-20">
         <div className="w-32 h-32 md:w-64 md:h-64 flex items-center justify-center">
           {logo && (
@@ -59,15 +67,15 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center px-12 md:px-24">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl animate-in fade-in slide-in-from-left duration-1000">
           <h1 className="font-headline text-6xl md:text-8xl font-bold mb-2 tracking-tighter drop-shadow-2xl">
-            {slide.title}
+            {slides[currentSlide].title}
           </h1>
           <h2 className="text-xl md:text-2xl font-light tracking-[0.4em] mb-8 text-secondary drop-shadow-xl">
-            {slide.subtitle}
+            {slides[currentSlide].subtitle}
           </h2>
           <p className="text-lg text-white mb-10 font-light leading-relaxed max-w-md drop-shadow-xl">
-            {slide.desc}
+            {slides[currentSlide].desc}
           </p>
           <div className="flex gap-4">
             <a href="#products">
@@ -76,6 +84,28 @@ export function Hero() {
               </Button>
             </a>
           </div>
+        </div>
+      </div>
+
+      {/* Slide Navigation */}
+      <div className="absolute bottom-12 right-12 md:right-24 z-20 flex items-center gap-8">
+        <div className="flex flex-col items-end">
+          <span className="text-4xl font-headline font-bold text-secondary">{slides[currentSlide].id}</span>
+          <div className="h-px w-24 bg-white/30 relative">
+            <div 
+              className="absolute top-0 left-0 h-full bg-secondary transition-all duration-500" 
+              style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+            />
+          </div>
+          <span className="text-xs uppercase tracking-widest mt-2 opacity-50">0{slides.length}</span>
+        </div>
+        <div className="flex gap-4">
+          <Button variant="outline" size="icon" onClick={prevSlide} className="rounded-full border-white/20 hover:bg-white/10 text-white">
+            <ChevronLeft className="w-6 h-6" />
+          </Button>
+          <Button variant="outline" size="icon" onClick={nextSlide} className="rounded-full border-white/20 hover:bg-white/10 text-white">
+            <ChevronRight className="w-6 h-6" />
+          </Button>
         </div>
       </div>
 

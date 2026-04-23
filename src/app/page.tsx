@@ -8,6 +8,7 @@ import { Hero } from '@/components/Hero';
 import { BrandStory } from '@/components/BrandStory';
 import { TeaIntro } from '@/components/TeaIntro';
 import { Products } from '@/components/Products';
+import { AITool } from '@/components/AITool';
 import { FAQ } from '@/components/FAQ';
 import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
@@ -53,6 +54,10 @@ export default function Home() {
       </div>
       
       <TeaIntro />
+      
+      <div id="ai-sommelier">
+        <AITool />
+      </div>
       
       <div id="products-section">
         <Products onAddToCart={addToCart} />
