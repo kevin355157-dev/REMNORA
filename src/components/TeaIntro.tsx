@@ -3,27 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-
-const notes = [
-  { 
-    title: '前調 (Top Note)', 
-    subtitle: '草本與清新', 
-    desc: '初入唇齒的瞬間，是如晨露般剔透的綠茶清香與野薄荷的凉意。',
-    img: 'https://picsum.photos/seed/herb1/400/300'
-  },
-  { 
-    title: '中調 (Middle Note)', 
-    subtitle: '花香與溫潤', 
-    desc: '茶湯滑過喉間，隱約透出白玉蘭的幽雅與烏龍茶特有的岩骨花香。',
-    img: 'https://picsum.photos/seed/herb2/400/300'
-  },
-  { 
-    title: '後調 (Base Note)', 
-    subtitle: '木質與回甘', 
-    desc: '飲畢，舌根生津，餘韻繚繞著淡雅的檀香與老樅的沉穩底蘊。',
-    img: 'https://picsum.photos/seed/herb3/400/300'
-  },
-];
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function TeaIntro() {
   const [scrollY, setScrollY] = useState(0);
@@ -35,6 +15,27 @@ export function TeaIntro() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const notes = [
+    { 
+      title: '前調 (Top Note)', 
+      subtitle: '草本與清新', 
+      desc: '初入唇齒的瞬間，是如晨露般剔透的綠茶清香與野薄荷的凉意。',
+      img: PlaceHolderImages.find(img => img.id === 'note-top')?.imageUrl || ''
+    },
+    { 
+      title: '中調 (Middle Note)', 
+      subtitle: '花香與溫潤', 
+      desc: '茶湯滑過喉間，隱約透出白玉蘭的幽雅與烏龍茶特有的岩骨花香。',
+      img: PlaceHolderImages.find(img => img.id === 'note-middle')?.imageUrl || ''
+    },
+    { 
+      title: '後調 (Base Note)', 
+      subtitle: '木質與回甘', 
+      desc: '飲畢，舌根生津，餘韻繚繞著淡雅的檀香與老樅的沉穩底蘊。',
+      img: PlaceHolderImages.find(img => img.id === 'note-base')?.imageUrl || ''
+    },
+  ];
 
   return (
     <section id="tea-intro" className="py-48 bg-primary text-primary-foreground relative overflow-hidden">
