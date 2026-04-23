@@ -2,7 +2,7 @@
 "use client"
 
 import React from 'react';
-import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
@@ -11,14 +11,17 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6 col-span-2">
-            <h2 className="font-headline text-4xl font-bold tracking-widest">CILANTRO</h2>
+            <h2 className="font-headline text-4xl font-bold tracking-widest">REMNORA</h2>
             <p className="text-foreground/70 max-w-sm leading-relaxed font-light">
               致力於將傳統製茶工藝與現代美學結合，為追求高品質生活的您，提供一場穿越感官的香氛之旅。
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><Instagram className="w-4 h-4" /></a>
-              <a href="#" className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><Facebook className="w-4 h-4" /></a>
-              <a href="#" className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><Mail className="w-4 h-4" /></a>
+              <a href="https://www.instagram.com/remnora_?igsh=MWwyYjhzd3B2YzQ5cQ==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
           
@@ -37,7 +40,7 @@ export function Footer() {
             <ul className="space-y-4 font-light">
               <li className="flex gap-3"><MapPin className="w-4 h-4 flex-shrink-0" /> <span>台北市大安區香氛路 101 號</span></li>
               <li className="flex gap-3"><Phone className="w-4 h-4 flex-shrink-0" /> <span>+886 2 2345 6789</span></li>
-              <li className="flex gap-3"><Mail className="w-4 h-4 flex-shrink-0" /> <span>hello@cilantro-aroma.com</span></li>
+              <li className="flex gap-3"><Mail className="w-4 h-4 flex-shrink-0" /> <span>hello@remnora.com</span></li>
             </ul>
           </div>
         </div>
@@ -45,7 +48,7 @@ export function Footer() {
         <Separator className="bg-primary/10 mb-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest font-light opacity-50">
-          <p>© 2024 CILANTRO AROMA. ALL RIGHTS RESERVED.</p>
+          <p>© 2024 REMNORA AROMA. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-primary">隱私權政策</a>
             <a href="#" className="hover:text-primary">服務條款</a>

@@ -55,7 +55,7 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
             <span className={cn(
               "font-headline text-2xl font-bold tracking-widest transition-colors",
               isScrolled ? "text-primary" : "text-white"
-            )}>CILANTRO</span>
+            )}>REMNORA</span>
           </a>
         </div>
 

@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Instagram, Facebook } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -99,9 +99,6 @@ export function Hero() {
             {currentSlide.desc}
           </p>
           <div className="flex gap-4">
-            <Button variant="outline" className="rounded-full px-8 py-6 border-white text-white hover:bg-white hover:text-black transition-all bg-black/20 backdrop-blur-sm">
-              探索系列
-            </Button>
             <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-secondary border-none shadow-xl">
               立即購買
             </Button>
@@ -136,8 +133,9 @@ export function Hero() {
 
       {/* Footer Social Icons */}
       <div className="absolute bottom-8 left-12 md:left-24 flex gap-6 z-20 opacity-80 hover:opacity-100 transition-opacity">
-        <a href="#" className="hover:text-secondary"><Instagram className="w-5 h-5" /></a>
-        <a href="#" className="hover:text-secondary"><Facebook className="w-5 h-5" /></a>
+        <a href="https://www.instagram.com/remnora_?igsh=MWwyYjhzd3B2YzQ5cQ==" target="_blank" rel="noopener noreferrer" className="hover:text-secondary">
+          <Instagram className="w-5 h-5" />
+        </a>
       </div>
     </section>
   );
