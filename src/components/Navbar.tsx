@@ -27,8 +27,8 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
 
   const navLinks = [
     { name: '產品', href: '#products' },
-    { name: '茶葉', href: '#tea-intro' },
-    { name: '成分', href: '#ingredients' },
+    { name: '茶葉', href: '#brand-story' },
+    { name: '成分', href: '#tea-intro' },
     { name: '常見問題', href: '#faq' },
     { name: '聯絡我們', href: '#footer' },
   ];
