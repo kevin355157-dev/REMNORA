@@ -26,13 +26,13 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background">
-      <div className="mb-12 w-48 h-auto relative flex items-center justify-center">
+      <div className="mb-12 w-64 h-auto relative flex items-center justify-center animate-pulse">
          {logo && (
            <Image 
              src={logo.imageUrl} 
              alt={logo.description} 
-             width={384} 
-             height={93} 
+             width={1341} 
+             height={362} 
              className="w-full h-auto object-contain"
              data-ai-hint="brand logo"
            />
@@ -40,11 +40,11 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       </div>
       <div className="w-64 h-1 bg-muted rounded-full overflow-hidden mb-2">
         <div 
-          className="h-full bg-primary progress-bar-fill" 
+          className="h-full bg-primary transition-all duration-300 ease-out" 
           style={{ width: `${progress}%` }}
         />
       </div>
-      <p className="font-headline text-primary text-xl font-medium">{progress}%</p>
+      <p className="font-headline text-primary text-xl font-medium tracking-widest">{progress}%</p>
     </div>
   );
 }
