@@ -1,10 +1,12 @@
 
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function BrandStory() {
   const [scrollY, setScrollY] = useState(0);
+  const brandImg = PlaceHolderImages.find(img => img.id === 'brand-bg')?.imageUrl || '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +26,7 @@ export function BrandStory() {
         >
           <div className="absolute inset-0 scale-125">
             <img 
-              src="https://picsum.photos/seed/cilantro1/1200/1600" 
+              src={brandImg} 
               alt="Tea Field" 
               className="w-full h-full object-cover"
               data-ai-hint="tea field"
@@ -32,7 +34,7 @@ export function BrandStory() {
           </div>
         </div>
 
-        {/* Text without deep parallax */}
+        {/* Text content */}
         <div className="space-y-8">
           <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm block">Our Philosophy</span>
           <h2 className="font-headline text-5xl md:text-7xl text-primary leading-tight">
