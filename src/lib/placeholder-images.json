@@ -79,10 +79,28 @@
       "imageHint": "flower tea"
     },
     {
+      "id": "note-top",
+      "description": "前調圖片",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496690498985922731/20210928e0e4876c-7d58-4eba-b2c6-f85dc9d99eaf.jpg?ex=69eacd26&is=69e97ba6&hm=4cf4c1cdb11f7fab2321c2e3f2b56bcbaef2ae6138aff1bb604cfd101de90f03&=&format=webp&width=840&height=482",
+      "imageHint": "top note"
+    },
+    {
+      "id": "note-middle",
+      "description": "中調圖片",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496690499568799785/10161.jpg_1140x855.jpg?ex=69eacd26&is=69e97ba6&hm=ac380944a3cb19d42dc5c6db67bfb5796e94a4b6c81007a4401945aea4978de5&=&format=webp&width=1421&height=1065",
+      "imageHint": "middle note"
+    },
+    {
+      "id": "note-base",
+      "description": "後調圖片",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496690499841560766/-1024x661.png?ex=69eacd26&is=69e97ba6&hm=142b6d8dd14d39669c567654f5b795878e77054b73077742614c6290c87df995&=&format=webp&quality=lossless&width=1536&height=992",
+      "imageHint": "base note"
+    },
+    {
       "id": "brand-bg",
-      "description": "Tea field background",
-      "imageUrl": "https://picsum.photos/seed/cilantro1/1920/1080",
-      "imageHint": "tea garden"
+      "description": "每一片茶葉，都是大自然的私語",
+      "imageUrl": "https://media.discordapp.net/attachments/1332392764947693670/1496690500126900236/E4LFRJ4ID8NL.jpg?ex=69eacd26&is=69e97ba6&hm=5fad43153b01590f992eed645da622a7f14155a5675a762fd465e132144f21d4&=&format=webp&width=1599&height=1065",
+      "imageHint": "tea field"
     },
     {
       "id": "ingredients",
