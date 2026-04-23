@@ -26,10 +26,9 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
   };
 
   const navLinks = [
-    { name: '產品', href: '#products' },
-    { name: '茶葉', href: '#brand-story' },
-    { name: '成分', href: '#tea-intro' },
-    { name: '侍茶師', href: '#ai-sommelier' },
+    { name: '產品', href: '#products-section' },
+    { name: '故事', href: '#brand-story' },
+    { name: '特色', href: '#tea-intro' },
     { name: '常見問題', href: '#faq' },
   ];
 
@@ -46,8 +45,8 @@ export function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
                 <Image 
                   src={logo.imageUrl} 
                   alt={logo.description} 
-                  width={400} 
-                  height={108} 
+                  width={1341} 
+                  height={362} 
                   className={cn(
                     "h-full w-auto object-contain transition-all duration-300",
                     !isScrolled && "brightness-0 invert"
