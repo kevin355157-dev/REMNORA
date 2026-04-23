@@ -16,7 +16,6 @@ const heroContent = {
 
 export function Hero() {
   const [scrollY, setScrollY] = useState(0);
-  const logo = PlaceHolderImages.find(img => img.id === 'brand-logo');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,23 +43,6 @@ export function Hero() {
         </video>
       </div>
 
-      {/* Brand Logo */}
-      <div className="absolute top-12 left-12 z-20">
-        <div className="w-48 h-auto md:w-80 flex items-center justify-center">
-          {logo && (
-            <Image 
-              src={logo.imageUrl} 
-              alt={logo.description} 
-              width={384} 
-              height={93} 
-              className="w-full h-auto object-contain"
-              data-ai-hint="brand logo"
-              priority
-            />
-          )}
-        </div>
-      </div>
-
       {/* Content */}
       <div className="relative z-10 h-full flex items-center px-12 md:px-24 pt-24">
         <div className="max-w-2xl animate-in fade-in slide-in-from-left duration-1000">
@@ -85,7 +67,7 @@ export function Hero() {
 
       {/* Footer Social Icons */}
       <div className="absolute bottom-8 left-12 md:left-24 flex gap-6 z-20 opacity-80 hover:opacity-100 transition-opacity">
-        <a href="https://www.instagram.com/remnora_?igsh=MWwyYjhzd3B2YzQ5cQ==" target="_blank" rel="noopener noreferrer" className="hover:text-secondary">
+        <a href="https://www.instagram.com/remnora_?igsh=MWwyYjhzd3B2YzQ5cQ==" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
           <Instagram className="w-5 h-5" />
         </a>
       </div>
