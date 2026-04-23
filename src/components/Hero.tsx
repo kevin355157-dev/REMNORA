@@ -99,9 +99,11 @@ export function Hero() {
             {currentSlide.desc}
           </p>
           <div className="flex gap-4">
-            <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-secondary border-none shadow-xl">
-              立即購買
-            </Button>
+            <a href="#products">
+              <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-secondary border-none shadow-xl transition-all active:scale-95">
+                立即購買
+              </Button>
+            </a>
           </div>
         </div>
 
